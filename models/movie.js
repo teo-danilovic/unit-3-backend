@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const commentSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true,
@@ -11,7 +11,7 @@ const commentSchema = new mongoose.Schema({
   },
 }, { timestamps: true })
 
-const hootSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
   title: {
     type: String,
     require: true,
@@ -23,15 +23,15 @@ const hootSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['News', 'Sports', 'Television', 'Movies', 'Music'],
+    enum: ['Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller', 'Western', 'Sci-Fi', 'Documentary', 'Animation']
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  comments: [commentSchema]
+  reviews: [reviewSchema]
 }, { timestamps: true })
 
-const Hoot = mongoose.model('Hoot', hootSchema)
+const Movie = mongoose.model('Movie', movieSchema)
 
-module.exports = Hoot
+module.exports = Movie
