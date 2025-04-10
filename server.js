@@ -18,6 +18,7 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(cors({ origin: process.env.FRONTEND_URI }));
+app.use("*", cors());
 app.use(express.json());
 app.use(logger('dev'));
 
